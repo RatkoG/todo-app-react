@@ -1,11 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
-const StyledText = styled.div`
-  color: red;
-`;
+import { ThemeProvider } from 'styled-components';
+import theme from '../utils/theme';
+import { TaskList } from './TaskList';
+import TaskListContextProvider from '../context/TaskListContext';
+import GlobalStyles from '../utils/global';
 
 const App = () => {
-  return <StyledText>TODO APP</StyledText>;
+  return (
+    <ThemeProvider theme={theme}>
+      <TaskListContextProvider>
+        <GlobalStyles />
+        <TaskList />
+      </TaskListContextProvider>
+    </ThemeProvider>
+  );
 };
 
 export default App;
