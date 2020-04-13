@@ -1,5 +1,7 @@
 import React from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
+import { TaskListContext } from '../context/TaskListContext';
 import { SharedButton } from '../utils/global';
 
 const StyledButton = styled(SharedButton)`
@@ -21,9 +23,23 @@ const StyledForm = styled.form`
   }
 `;
 export const TaskInput = () => {
+  const { addTask } = useContext(TaskListContext);
+  const [title, setTitle] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addTask(title);
+    setTitle(' ');
+  };
+  const handleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
   return (
-    <StyledForm className="form">
+    <StyledForm onSubmit={handleSubmit} className="form">
       <input
+        onChange={handleChange}
+        value={title}
         type="text"
         className="task-input"
         placeholder="Add Task..."
