@@ -33,9 +33,19 @@ const TaskListContextProvider = (props) => {
     setEdit(null);
   };
 
+  const clearList = () => setTasks([]);
+
   return (
     <TaskListContext.Provider
-      value={{ tasks, addTask, removeTask, findItem, editTask, edit }}
+      value={{
+        tasks,
+        addTask,
+        removeTask,
+        findItem,
+        editTask,
+        edit,
+        clearList,
+      }}
     >
       {props.children}
     </TaskListContext.Provider>
