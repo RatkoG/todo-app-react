@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
@@ -27,4 +27,11 @@ body{
   justify-content: center;
   align-items: center;
 }
+`;
+
+export const SharedButton = styled.button`
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
 `;

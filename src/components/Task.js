@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { SharedButton } from '../utils/global';
 const StyledLi = styled.li`
   font-size: 1.6rem;
   font-weight: 400;
@@ -12,15 +12,14 @@ const StyledLi = styled.li`
     padding-bottom: 2rem;
   }
 `;
-const StyledButton = styled.button`
+const StyledButton = styled(SharedButton)`
+  opacity: 0;
   &:not(:last-child) {
     margin-right: 1rem;
   }
-
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  outline: none;
+  ${StyledLi}:hover & {
+    opacity: 1;
+  }
 `;
 const StyledIcon = styled.i`
   color: ${(props) =>

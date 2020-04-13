@@ -9,6 +9,10 @@ const TaskListContextProvider = (props) => {
     { title: 'Test your skills', id: 3 },
     { title: 'Github Review', id: 4 },
   ]);
+  const addTask = (title) => {
+    setTasks([...tasks]);
+  };
+
   return (
     <TaskListContext.Provider value={{ tasks }}>
       {props.children}
