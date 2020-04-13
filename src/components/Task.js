@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { TaskListContext } from '../context/TaskListContext';
 import { SharedButton } from '../utils/global';
 const StyledLi = styled.li`
   font-size: 1.6rem;
@@ -28,11 +29,15 @@ const StyledIcon = styled.i`
 `;
 
 const Task = ({ task }) => {
+  const { removeTask } = useContext(TaskListContext);
   return (
     <StyledLi className="list-item">
       <span>{task.title}</span>
       <div>
-        <StyledButton className="btn-delete task-btn">
+        <StyledButton
+          onClick={() => removeTask(task.id)}
+          className="btn-delete task-btn"
+        >
           <StyledIcon primary className="fas fa-trash-alt"></StyledIcon>
         </StyledButton>
         <StyledButton className="btn-edit task-btn">
