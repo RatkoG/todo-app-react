@@ -14,18 +14,25 @@ const StyledTaskList = styled.div`
 const StyledUl = styled.ul`
   padding: 0;
 `;
-
+const StyledH2 = styled.h2`
+  text-align: center;
+  color: ${(props) => props.theme.colors.edit};
+`;
 export const TaskList = () => {
   const { tasks } = useContext(TaskListContext);
   return (
     <StyledTaskList>
       <Header />
       <TaskInput />
-      <StyledUl className="list">
-        {tasks.map((task) => {
-          return <Task task={task} key={task.id} />;
-        })}
-      </StyledUl>
+      {tasks.length ? (
+        <StyledUl className="list">
+          {tasks.map((task) => {
+            return <Task task={task} key={task.id} />;
+          })}
+        </StyledUl>
+      ) : (
+        <StyledH2>No Tasks</StyledH2>
+      )}
     </StyledTaskList>
   );
 };
