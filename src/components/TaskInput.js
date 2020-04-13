@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { TaskListContext } from '../context/TaskListContext';
 import { SharedButton } from '../utils/global';
@@ -23,17 +23,30 @@ const StyledForm = styled.form`
   }
 `;
 export const TaskInput = () => {
-  const { addTask } = useContext(TaskListContext);
+  const { addTask, edit, editTask } = useContext(TaskListContext);
   const [title, setTitle] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addTask(title);
-    setTitle(' ');
+    if (!edit) {
+      addTask(title);
+      setTitle(' ');
+    } else {
+      editTask(title, edit.id);
+    }
   };
   const handleChange = (event) => {
     setTitle(event.target.value);
   };
+
+  useEffect(() => {
+    if (edit) {
+      setTitle(edit.title);
+      console.log(edit);
+    } else {
+      setTitle('');
+    }
+  }, [edit]);
 
   return (
     <StyledForm onSubmit={handleSubmit} className="form">
@@ -45,7 +58,9 @@ export const TaskInput = () => {
         placeholder="Add Task..."
         required
       />
-      <StyledButton className="btn add-task">Add Task</StyledButton>
+      <StyledButton className="btn add-task">
+        {edit ? 'Edit Task' : 'Add Task'}
+      </StyledButton>
     </StyledForm>
   );
 };

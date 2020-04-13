@@ -29,7 +29,7 @@ const StyledIcon = styled.i`
 `;
 
 const Task = ({ task }) => {
-  const { removeTask } = useContext(TaskListContext);
+  const { removeTask, findItem } = useContext(TaskListContext);
   return (
     <StyledLi className="list-item">
       <span>{task.title}</span>
@@ -40,7 +40,10 @@ const Task = ({ task }) => {
         >
           <StyledIcon primary className="fas fa-trash-alt"></StyledIcon>
         </StyledButton>
-        <StyledButton className="btn-edit task-btn">
+        <StyledButton
+          onClick={() => findItem(task.id)}
+          className="btn-edit task-btn"
+        >
           <StyledIcon className="fas fa-pen"></StyledIcon>
         </StyledButton>
       </div>
