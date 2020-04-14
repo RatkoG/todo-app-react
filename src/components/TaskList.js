@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 import Header from './Header';
 import { TaskInput } from './TaskInput';
 import { TaskListContext } from '../context/TaskListContext';
+import styled from 'styled-components';
 import Task from './Task';
-import { SharedButton } from '../utils/global';
 
 const StyledTaskList = styled.div`
   padding: 3rem;
@@ -19,16 +18,8 @@ const StyledH2 = styled.h2`
   text-align: center;
   color: ${(props) => props.theme.colors.edit};
 `;
-const StyledButton = styled(SharedButton)`
-  display: block;
-  background: ${(props) => props.theme.colors.delete};
-  color: white;
-  margin: auto;
-  padding: 1rem 1.5rem;
-  font-size: 1.8rem;
-`;
 export const TaskList = () => {
-  const { tasks, clearList } = useContext(TaskListContext);
+  const { tasks } = useContext(TaskListContext);
   return (
     <StyledTaskList>
       <Header />
@@ -42,10 +33,6 @@ export const TaskList = () => {
       ) : (
         <StyledH2>No Tasks</StyledH2>
       )}
-
-      {tasks.length ? (
-        <StyledButton onClick={clearList}>Clear List</StyledButton>
-      ) : null}
     </StyledTaskList>
   );
 };
