@@ -49,7 +49,7 @@ export const TaskInput = () => {
   }, [edit]);
 
   return (
-    <StyledForm onSubmit={handleSubmit} className="form">
+    <StyledForm onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
         value={title}
@@ -58,9 +58,7 @@ export const TaskInput = () => {
         placeholder="Add Task..."
         required
       />
-      <StyledButton className="btn add-task">
-        {edit ? 'Edit Task' : 'Add Task'}
-      </StyledButton>
+      <StyledButton>{edit ? 'Edit Task' : 'Add Task'}</StyledButton>
     </StyledForm>
   );
 };
