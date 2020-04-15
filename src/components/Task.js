@@ -22,6 +22,10 @@ const StyledButton = styled(SharedButton)`
     opacity: 1;
   }
 `;
+const StyledSpan = styled.span`
+  cursor: pointer;
+`;
+
 const StyledIcon = styled.i`
   color: ${(props) =>
     props.primary ? props.theme.colors.delete : props.theme.colors.edit};
@@ -29,21 +33,22 @@ const StyledIcon = styled.i`
 `;
 
 const Task = ({ task }) => {
-  const { removeTask, findItem } = useContext(TaskListContext);
+  const { removeTask, findItem, toggleComplete } = useContext(TaskListContext);
   return (
-    <StyledLi className="list-item">
-      <span>{task.title}</span>
+    <StyledLi>
+      <StyledSpan
+        onClick={() => toggleComplete(task.id)}
+        style={{
+          textDecoration: task.completed ? 'line-through' : null,
+        }}
+      >
+        {task.title}
+      </StyledSpan>
       <div>
-        <StyledButton
-          onClick={() => removeTask(task.id)}
-          className="btn-delete task-btn"
-        >
+        <StyledButton onClick={() => removeTask(task.id)}>
           <StyledIcon primary className="fas fa-trash-alt"></StyledIcon>
         </StyledButton>
-        <StyledButton
-          onClick={() => findItem(task.id)}
-          className="btn-edit task-btn"
-        >
+        <StyledButton onClick={() => findItem(task.id)}>
           <StyledIcon className="fas fa-pen"></StyledIcon>
         </StyledButton>
       </div>

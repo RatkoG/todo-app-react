@@ -9,7 +9,6 @@ const StyledButton = styled(SharedButton)`
   color: white;
   font-size: 2rem;
   flex: 30%;
-  /* padding: 1.3rem 2.3rem; */
 `;
 
 const StyledForm = styled.form`

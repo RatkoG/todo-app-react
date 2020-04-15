@@ -13,7 +13,7 @@ const StyledHeader = styled.h1`
 
 const Header = () => {
   return (
-    <div className="header	">
+    <div>
       <StyledHeader>Task Manager</StyledHeader>
     </div>
   );
