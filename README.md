@@ -1,7 +1,5 @@
   # ToDo App
 
-[Check it live here](https://todo.ratkogjurichanin.com/ "Check it live here")
-
 ![Thumbnail](/thumbnail.png)
 
 This project is build with React.
